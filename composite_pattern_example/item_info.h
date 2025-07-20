@@ -17,11 +17,16 @@ struct ItemInfo {
 
 inline std::ostream& operator<<(std::ostream& out, const ItemInfo& info) {
     
-    out << "Name: " << info.name_ << '\n';
-    out << "Amount: " << info.amount_ << '\n';
+    out << "Item information:\n";
+    out << "{\n";
+    out << "\tName: " << info.name_ << '\n';
+    out << "\tAmount: " << info.amount_ << '\n';
     if (info.durability_.has_value()) {
-        out << "Durability: " << info.durability_.value() << '\n';
+        out << "\tDurability: " << info.durability_.value() << '\n';
     }
+    out << (info.is_stackable_ ? "\tStackable" : "\tNot stackable") << '\n';
+    out << (info.is_selected_ ? "\tSelected" : "\tNot selected") << '\n';
+    out << "}\n";
     
     return out;
 }

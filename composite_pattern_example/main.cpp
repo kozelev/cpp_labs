@@ -1,5 +1,6 @@
 #include "log.h"
 #include "sword.h"
+#include "dirt.h"
 
 
 
@@ -7,25 +8,46 @@ int main() {
 
     Item* l = new Log(LogType::OAK, 123);
     l->select();
-    std::cout << "------------------------------------------------";
-    std::cout << "\nBefore using:\n";
+    std::cout << "------------------------------------------------\n";
+    std::cout << "Before using:\n";
     l->print_info();
+
+    std::cout << std::endl;
+
+    std::cout << "After using:\n";
     l->use();
-    std::cout << "\nAfter using\n";
     l->print_info();
     delete l;
-    std::cout << "------------------------------------------------";
+    std::cout << "------------------------------------------------\n";
 
-    std::cout << "------------------------------------------------";
+    std::cout << "------------------------------------------------\n";
     Item* s = new Sword(SwordType::NETHERITE, 1);
     s->select();
-    std::cout << "\nBefore using:\n";
+    std::cout << "Before using:\n";
     s->print_info();
+    
+    std::cout << std::endl;
+
+    std::cout << "After using\n";
     s->use();
-    std::cout << "\nAfter using\n";
     s->print_info();
     delete s;
-    std::cout << "------------------------------------------------";
+    std::cout << "------------------------------------------------\n";
+
+    std::cout << "------------------------------------------------\n";
+    Item* d = new Dirt(32);
+    d->select();
+    std::cout << "Before using:\n";
+    d->print_info();
+    
+    std::cout << std::endl;
+
+    std::cout << "After using\n";
+    d->use();
+    d->print_info();
+    delete d;
+    std::cout << "------------------------------------------------\n";
+    
 
     return 0;
 }

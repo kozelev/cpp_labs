@@ -43,9 +43,14 @@ public:
     }
 
     void use() override {
-        int used_logs = info_.amount_ % 16;
-        std::cout << used_logs  << " " << info_.name_ << " were used for smelting\n";
-        info_.amount_ -= used_logs;
+        uint32_t used_logs = info_.amount_ % 16 + 3;
+        if (info_.amount_ > used_logs) {
+            std::cout << used_logs  << " " << info_.name_ << " were used for smelting\n";
+            info_.amount_ -= used_logs;
+        } else {
+            std::cout << info_.amount_  << " " << info_.name_ << " were used for smelting\n";
+            info_.amount_ = 0;
+        }
     }
 };
 

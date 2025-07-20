@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "item_info.h"
 
 // abstracte base class, which represents 
@@ -12,10 +11,13 @@ protected:
 protected:
     Item(ItemInfo info): info_(info) {}
 
-
 public:
     void select() {
         info_.is_selected_ = true;
+    }
+    
+    void deselect() {
+        info_.is_selected_ = false;
     }
 
     virtual void print_info() const = 0;
