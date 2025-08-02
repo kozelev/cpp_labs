@@ -47,7 +47,7 @@ public:
         int curr_durability = info_->durability_.value();
         int used_durability = curr_durability % 7 + 1;
         if (curr_durability > used_durability) {
-            std::cout << used_durability  << " durability of " << info_->name_ << " were used for foghting\n";
+            std::cout << used_durability  << " durability of " << info_->name_ << " were used for fighting\n";
             info_->durability_ = curr_durability - used_durability;
         } else {
             std::cout << info_->name_ << " broke :(\n";
