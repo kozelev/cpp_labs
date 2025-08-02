@@ -18,6 +18,7 @@ public:
     void use() override {
         std::cout << info_.amount_ << " of " << info_.name_ << " were dropped\n";
         info_.amount_ = 0;
+        deselect();
     }
 
 };

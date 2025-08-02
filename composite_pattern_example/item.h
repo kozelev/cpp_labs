@@ -2,6 +2,9 @@
 
 #include "item_info.h"
 
+#include <memory>
+
+
 // abstracte base class, which represents 
 // item's interface
 class Item {
@@ -27,3 +30,5 @@ public:
     virtual ~Item() = default;
 };
 
+
+using ItemPtr = std::unique_ptr<Item>;

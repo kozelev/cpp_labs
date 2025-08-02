@@ -50,6 +50,7 @@ public:
         } else {
             std::cout << info_.amount_  << " " << info_.name_ << " were used for smelting\n";
             info_.amount_ = 0;
+            deselect();
         }
     }
 };

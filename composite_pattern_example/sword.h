@@ -50,6 +50,7 @@ public:
         } else {
             std::cout << info_.name_ << " broke :(";
             info_.durability_ = 0;
+            deselect();
         }
     }
 };
