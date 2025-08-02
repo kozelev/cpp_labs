@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdint>
 #include <iostream>
+#include <memory>
 
 
 struct ItemInfo {
@@ -12,6 +13,11 @@ struct ItemInfo {
     std::optional<uint32_t> durability_ = std::nullopt;
     bool is_stackable_ = false;
     bool is_selected_ = false;
+
+    ItemInfo(const std::string name, uint32_t amount, std::optional<uint32_t> durability, 
+            bool is_stackable, bool is_selected)
+      : name_(name), amount_(amount), durability_(durability),
+      is_stackable_(is_stackable), is_selected_(is_selected) {}
 };
 
 
@@ -30,3 +36,10 @@ inline std::ostream& operator<<(std::ostream& out, const ItemInfo& info) {
     
     return out;
 }
+
+
+using ItemInfoPtr = std::unique_ptr<ItemInfo>;
+
+
+
+

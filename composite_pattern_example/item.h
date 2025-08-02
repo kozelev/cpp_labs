@@ -9,18 +9,18 @@
 // item's interface
 class Item {
 protected:
-    ItemInfo info_;
+    ItemInfoPtr info_;
 
 protected:
-    Item(ItemInfo info): info_(info) {}
+    Item(ItemInfoPtr info): info_(std::move(info)) {}
 
 public:
-    void select() {
-        info_.is_selected_ = true;
+    virtual void select() {
+        info_->is_selected_ = true;
     }
     
-    void deselect() {
-        info_.is_selected_ = false;
+    virtual void deselect() {
+        info_->is_selected_ = false;
     }
 
     virtual void print_info() const = 0;

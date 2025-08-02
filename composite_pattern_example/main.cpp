@@ -1,53 +1,48 @@
 #include "log.h"
 #include "sword.h"
 #include "dirt.h"
-
+#include  "inventory.h"
 
 
 int main() {
 
-    Item* l = new Log(LogType::OAK, 123);
-    l->select();
-    std::cout << "------------------------------------------------\n";
-    std::cout << "Before using:\n";
-    l->print_info();
+    ItemPtr oak_logs = std::make_unique<Log>(LogType::OAK, 123);
+    ItemPtr netherite_sword = std::make_unique<Sword>(SwordType::NETHERITE, 1);
+    ItemPtr dirt = std::make_unique<Dirt>(32);
 
-    std::cout << std::endl;
+    InventoryPtr inventory = std::make_unique<Inventory>();
+    inventory->add_item(std::move(oak_logs));
+    inventory->add_item(std::move(netherite_sword));
+    
 
-    std::cout << "After using:\n";
-    l->use();
-    l->print_info();
-    delete l;
-    std::cout << "------------------------------------------------\n";
+    ItemPtr acacia_logs = std::make_unique<Log>(LogType::ACACIA, 12);
+    ItemPtr spruce_logs = std::make_unique<Log>(LogType::SPRUCE, 48);
+    ItemPtr diamond_sword = std::make_unique<Sword>(SwordType::DIAMOND, 128);
+    ItemPtr one_more_dirt = std::make_unique<Dirt>(64);
+    ItemPtr wooden_sword = std::make_unique<Sword>(SwordType::WOODEN, 16);
+    ItemPtr still_one_more_dirt = std::make_unique<Dirt>(128);
 
-    std::cout << "------------------------------------------------\n";
-    Item* s = new Sword(SwordType::NETHERITE, 1);
-    s->select();
-    std::cout << "Before using:\n";
-    s->print_info();
+    InventoryPtr shulker = std::make_unique<Inventory>();
+    shulker->add_item(std::move(acacia_logs));
+    shulker->add_item(std::move(spruce_logs));
+    shulker->add_item(std::move(diamond_sword));
+    shulker->add_item(std::move(one_more_dirt));
+    shulker->add_item(std::move(wooden_sword));
+    shulker->add_item(std::move(still_one_more_dirt));
+
+
+    inventory->add_item(std::move(shulker));
+    inventory->add_item(std::move(dirt));
+    std::cout << "Print with all unselected items:\n";
+    // all items are unselected
+    inventory->print_info();
     
     std::cout << std::endl;
-
-    std::cout << "After using\n";
-    s->use();
-    s->print_info();
-    delete s;
-    std::cout << "------------------------------------------------\n";
-
-    std::cout << "------------------------------------------------\n";
-    Item* d = new Dirt(32);
-    d->select();
-    std::cout << "Before using:\n";
-    d->print_info();
     
-    std::cout << std::endl;
-
-    std::cout << "After using\n";
-    d->use();
-    d->print_info();
-    delete d;
-    std::cout << "------------------------------------------------\n";
-    
+    // select and print selected items
+    inventory->select();
+    std::cout << "Print with all selected items:\n";
+    inventory->print_info();
 
     return 0;
 }

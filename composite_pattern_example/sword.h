@@ -32,32 +32,29 @@ private:
     SwordType sw_type_;
 public:
     Sword(SwordType type, int32_t durability)
-      : Item({LogTypeToString(type) + " sword", 1, durability, false, false}),
+      : Item(std::make_unique<ItemInfo>(LogTypeToString(type) + " sword", 1, durability, false, false)),
         sw_type_(type) {}
 
     void print_info() const override {
-        if (info_.is_selected_) {
-            std::cout << info_;
+        if (info_->is_selected_) {
+            std::cout << *info_;
+        } else {
+            std::cout << "Item " << info_->name_ << " is unselected\n";
         }
     }
 
     void use() override {
-        int curr_durability = info_.durability_.value();
+        int curr_durability = info_->durability_.value();
         int used_durability = curr_durability % 7 + 1;
         if (curr_durability > used_durability) {
-            std::cout << used_durability  << " durability of " << info_.name_ << " were used for foghting\n";
-            info_.durability_ = curr_durability - used_durability;
+            std::cout << used_durability  << " durability of " << info_->name_ << " were used for foghting\n";
+            info_->durability_ = curr_durability - used_durability;
         } else {
-            std::cout << info_.name_ << " broke :(";
-            info_.durability_ = 0;
+            std::cout << info_->name_ << " broke :(\n";
+            info_->durability_ = 0;
             deselect();
         }
     }
 };
-
-
-
-
-
 
 
