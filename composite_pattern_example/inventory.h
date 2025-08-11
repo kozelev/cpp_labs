@@ -19,18 +19,16 @@ public:
     Inventory(): Item(nullptr), cells_() {}    
 	
     void add_item(ItemPtr&& item) {
-        bool is_full = true;
+        if (inventory_.size() == MAX_CELL_NUMBER) {
+            std::cout << "Inventory is full\n";
+        }
         for(int i = 0; i < MAX_CELL_NUMBER; ++i) {
             //std::cout << cells_[i];
             if (!cells_[i]) {
                 inventory_.emplace(i, std::move(item));
                 cells_[i] = true;
-                is_full = false;
                 break;
             }
-        }
-        if (is_full) {
-            std::cout << "Inventory is full\n";
         }
     }
 
@@ -67,7 +65,7 @@ public:
     }
 
     // we don't need to delete allocated memory
-    // because we are usin smart pointer
+    // because we are using smart pointer
     // std::unique_ptr which manages
     // the memery himself
     ~Inventory() = default;
