@@ -13,6 +13,7 @@
 
 
 // your container (e.g. deque, stack, vector, queue and etc.)
+// can be a template
 class Container {
 private:
     // it's possible not to mark
