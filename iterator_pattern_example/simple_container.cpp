@@ -2,7 +2,7 @@
 #include "container_iterator.h" // include here!
 
 
-Container::Container(): arr_(nullptr), size_(0) {}
+Container::Container(): size_(0), arr_(nullptr) {}
 
 Container::Container(size_t cap): size_(0), arr_(new int[cap]) {}
 

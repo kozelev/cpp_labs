@@ -35,7 +35,8 @@ public:
 
     ~Container();
 
-
+    // method for creating an iterator
+    // this method MUST be in container!!!
     Iterator<int>* CreateIterator() const;
 };
 

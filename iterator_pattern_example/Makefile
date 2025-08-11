@@ -1,3 +1,3 @@
 iterator_pattern:
-	g++ simple_container.cpp container_iterator.cpp main.cpp
+	g++ -Wall -Wextra -fsanitize=address,undefined,leak simple_container.cpp container_iterator.cpp main.cpp
 	./a.out

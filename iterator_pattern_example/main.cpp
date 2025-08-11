@@ -1,14 +1,19 @@
 #include "simple_container.h"
-#include <ostream>
 
 
 void PrintContainterWithIterator(const Container& c) {
     
     std::cout << "Print Containter With Pattern Iterator:" << std::endl;
+    
+    // using pattern Iterator
     auto it = c.CreateIterator();
     for (it->First(); !it->IsDone(); it->Next()) {
         std::cout << it->CurrentItem() << ' ';;
     }
+    //
+
+    // delete iterator, because
+    // it is a pointer
     delete it;
 }
 
