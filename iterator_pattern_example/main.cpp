@@ -6,6 +6,7 @@ void PrintContainterWithIterator(const Container& c) {
     std::cout << "Print Containter With Pattern Iterator:" << std::endl;
     
     // using pattern Iterator
+    // TODO: what is decltype(it)?
     auto it = c.CreateIterator();
     for (it->First(); !it->IsDone(); it->Next()) {
         std::cout << it->CurrentItem() << ' ';;
