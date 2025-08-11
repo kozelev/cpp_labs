@@ -17,7 +17,7 @@ private:
     std::array<bool, MAX_CELL_NUMBER> cells_;
 public:
     Inventory(): Item(nullptr), cells_() {}    
-
+	
     void add_item(ItemPtr&& item) {
         bool is_full = true;
         for(int i = 0; i < MAX_CELL_NUMBER; ++i) {
