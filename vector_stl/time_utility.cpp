@@ -15,12 +15,13 @@ std::time_t CreateTime(size_t hours, size_t minutes) {
 
     using std::chrono::system_clock;
     std::time_t current_time = system_clock::to_time_t(std::chrono::system_clock::now());
-    std::tm result_time = *localtime(&current_time);
+    
+    std::tm* tm_result_time = localtime(&current_time);
+    tm_result_time->tm_hour = hours;
+    tm_result_time->tm_min = minutes;
 
-    result_time.tm_hour = hours;
-    result_time.tm_min = minutes;
-
-    return mktime(&result_time);
+    std::time_t result_time = mktime(tm_result_time);
+    return result_time;
 }
 
 
