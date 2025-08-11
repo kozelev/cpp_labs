@@ -1,3 +1,3 @@
 vector_stl:
-	g++ time_utility.cpp main.cpp -o main.out
+	g++ -Wall -Wextra -fsanitize=address,undefined,leak time_utility.cpp main.cpp -o main.out
 	./main.out
